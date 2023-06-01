@@ -5,3 +5,5 @@ Cargo.lock
 **/*.rs.bk
 *.pdb
 CMakeUserPresets.json
+compile_commands.json
+.clangd

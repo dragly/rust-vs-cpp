@@ -1,2 +1,2 @@
 [workspace]
-members = ["iterator-invalidation-rust"]
+members = ["iterator-invalidation-rust", "uninitialized-rust"]
