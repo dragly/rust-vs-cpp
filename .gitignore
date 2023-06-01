@@ -7,3 +7,4 @@ Cargo.lock
 CMakeUserPresets.json
 compile_commands.json
 .clangd
+venv
