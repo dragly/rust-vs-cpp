@@ -11,4 +11,5 @@ int main() {
   } else {
     value = 44;
   }
+  fmt::print("{}\n", value);
 }
