@@ -34,7 +34,7 @@ void act(const Command &command) {
           [](const Multiply &multiply) {
             fmt::println("{}", multiply.a * multiply.b);
           },
-          [](const StatusOK &) { fmt::println("Everything will be alright!"); },
+         [](const StatusOK &) { fmt::println("Everything will be alright!"); },
       },
       command);
 }
@@ -87,9 +87,9 @@ void run() {
 }
 } // namespace inheritance
 
-// ----- TEMPLATES -----
+// ----- OVERLOADS -----
 
-namespace templates {
+namespace overloads {
 struct Message {
   std::string contents;
 };
@@ -101,44 +101,41 @@ struct Multiply {
 
 struct StatusOK {};
 
-template <typename T> struct Command {
-  T value;
-};
-
-template <typename T> void act(const Command<T> &command);
-
-template <> void act(const Command<Message> &message) {
-  fmt::println("{}", message.value.contents);
+void act(const Message &message) {
+  fmt::println("{}", message.contents);
 }
 
-template <> void act(const Command<Multiply> &multiply) {
-  fmt::println("{}", multiply.value.a * multiply.value.b);
+void act(const Multiply &multiply) {
+  fmt::println("{}", multiply.a * multiply.b);
 }
 
-template <> void act(const Command<StatusOK> &) {
+void act(const StatusOK &) {
   fmt::println("Everything will be alright!");
 }
 
 void run() {
-  act(Command<Message>{Message{"Hello"}});
-  act(Command<Multiply>{Multiply{1.1, 3.2}});
-  act(Command<StatusOK>{StatusOK{}});
+  act(Message{"Hello"});
+  act(Multiply{1.1, 3.2});
+  act(StatusOK{});
 }
-} // namespace templates
+} // namespace overloads
 
 // ----- ENUMS -----
 
 namespace enums {
-struct Message {
+
+struct CommandBase {};
+
+struct Message : public CommandBase {
   std::string contents;
 };
 
-struct Multiply {
+struct Multiply : public CommandBase {
   float a;
   float b;
 };
 
-struct StatusOK {};
+struct StatusOK : public CommandBase {};
 
 enum class Command {
   message,
@@ -146,7 +143,7 @@ enum class Command {
   statusOK,
 };
 
-void act(const Command &command) {
+void act(const Command &command, std::unique_ptr<CommandBase> cmd) {
   switch (command) {
   case Command::message:
     fmt::println("...");

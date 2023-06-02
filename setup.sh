@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt update
+
 # install apt packages
 sudo apt install ninja-build || exit $?
 
@@ -18,3 +20,5 @@ popd || exit $?
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+conan profile detect
