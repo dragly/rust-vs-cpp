@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 project(RustVsCpp LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 23)
 
 set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
@@ -10,4 +11,5 @@ else()
 endif()
 
 add_subdirectory(iterator-invalidation-cpp)
+add_subdirectory(variants-cpp)
 add_subdirectory(uninitialized-cpp)
