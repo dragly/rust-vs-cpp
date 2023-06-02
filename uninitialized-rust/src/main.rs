@@ -1,4 +1,13 @@
+struct Test {
+    x: f32
+}
+
 fn main() {
-    let value: i32;
-    println!("{}", value);
+    {
+        let a = Test { x: 10.0 };
+    }
+    {
+        let b = Test {};
+        println!("x is {}", b.x);
+    }
 }

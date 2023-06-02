@@ -2,14 +2,17 @@
 #include <iostream>
 #include <vector>
 
+struct Test {
+  float x;
+};
+
 int main() {
-  bool something = false;
-  int value;
-  fmt::print("{}\n", value);
-  if (something) {
-    value = 42;
-  } else {
-    value = 44;
+  {
+    Test a;
+    a.x = 10;
   }
-  fmt::print("{}\n", value);
+  {
+    Test b;
+    std::cout << "x is " << b.x << "!\n";
+  }
 }
