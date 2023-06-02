@@ -7,6 +7,10 @@
 
 // ---- VARIANTS ----
 
+// Things to explore
+//
+// - Remove one of the arms in the visit and compare the compiler errors to Rust
+
 namespace variants {
 template <typename... Ts> struct Overloader : Ts... {
   using Ts::operator()...;
@@ -175,6 +179,3 @@ int main() {
   fmt::println("\n\nEnums:");
   enums::run();
 }
-
-// Things to explore
-// - Remove one of the arms in the visit and compare the compiler errors
