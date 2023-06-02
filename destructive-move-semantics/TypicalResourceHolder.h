@@ -6,9 +6,7 @@ template<typename Mutex>
 class Guard
 {
 public:
-    using MutexType = Mutex;
-
-    explicit Guard(MutexType& mutex)
+    explicit Guard(Mutex& mutex)
         : m_mutex(mutex)
     {
         m_mutex.lock();
@@ -23,5 +21,5 @@ public:
     Guard& operator=(const Guard&) = delete;
 
 private:
-    MutexType&  m_mutex;
+    Mutex& m_mutex;
 };
