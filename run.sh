@@ -1,20 +1,22 @@
-#!/bin/bash
+#!/bin/sh
+die () {
+    echo >&2 "$@"
+    exit 1
+}
 
-source venv/bin/activate
+[ "$#" -ge 1 ] || die "at least 1 argument required, $# provided"
 
-export CC=clang-15 || exit $?
-export CXX=clang++-15 || exit $?
+echo $1 | grep -- "-cpp$"
+if [ $? -eq 0 ]; then
+    ./run-cpp.sh "$@"
+    exit 0
+fi
 
-mkdir -p build || exit $?
-cd build || exit $?
-conan install .. --build=missing --output-folder=build -s build_type=$1 || exit $?
-cmake .. \
-    -DCMAKE_TOOLCHAIN_FILE=build/conan_toolchain.cmake \
-    -DCMAKE_BUILD_TYPE=$1 \
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-    -GNinja \
-    || exit $?
-cp compile_commands.json .. || exit $?
-ninja $2 || exit $?
+echo $1 | grep -- "-rust$"
+if [ $? -eq 0 ]; then
+    ./run-rust.sh "$@"
+    exit 0
+fi
 
-./$2/$2 || exit $?
+echo "Target name does not end with -cpp or -rust, no idea what to do"
+exit 1

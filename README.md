@@ -12,26 +12,22 @@ to avoid overriding any configuration you have from before.
 bash setup.sh
 ```
 
-# Running Rust examples
-
-The examples are run with cargo by passing the example name:
-
-```bash
-cargo run --bin uninitialized-rust
-```
-
-# Running C++ examples
+# Running Rust and C++ examples
 
 The examples are run with a run script by passing a configuration and
-the name of the example:
+the name of the examples:
 
 ```bash
-bash run.sh Debug uninitialized-cpp 
+run.sh uninitialized-cpp Release
+```
+
+```bash
+run.sh uninitialized-rust Debug
 ```
 
 # Important
 
-A lot of the examples are meant to fail when building or running them.
+Some of the examples are meant to fail when building or running them.
 For instance, `uninitialized-rust` is meant to show that the Rust compiler
 will not let you use an uninitialized variable and will fail with a
 corresponding error message.
