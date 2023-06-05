@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $HOME/.cargo/env
+
 BUILD_TYPE=${2:-Debug}
 
 if [ $BUILD_TYPE = Debug ]

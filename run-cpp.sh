@@ -1,9 +1,9 @@
 #!/bin/bash
 
-source venv/bin/activate || exit $?
+source venv/bin/activate
 
-export CC=clang-15 || exit $?
-export CXX=clang++-15 || exit $?
+export CC=clang-16 || exit $?
+export CXX=clang++-16 || exit $?
 
 BUILD_TYPE=${2:-Debug}
 

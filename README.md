@@ -2,6 +2,19 @@
 
 Examples where Rust is safer, more elegant or more efficient than C++
 
+# Using Docker
+
+If you are happy to use your own environment, skip this step.
+
+If you prefer using Docker instead of running the setup script on your own system environment,
+run the following command to launch a Docker environment:
+
+```bash
+docker run --mount type=bind,source=(pwd),target=/src --workdir /src --interactive --tty ubuntu:22.04 bash
+```
+
+Next, follow the instructions below.
+
 # Setup
 
 Run the following command to install dependencies.
