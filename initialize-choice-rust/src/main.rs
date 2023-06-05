@@ -1,34 +1,24 @@
 // Noncopyable by default
-struct Resource
-{
-    data: usize
+struct Resource {
+    data: usize,
 }
 
-impl Resource
-{
-    fn from_string(input: &str) -> Resource
-    {
-        Resource{
-            data: input.len()
-        }
+impl Resource {
+    fn from_string(input: &str) -> Resource {
+        Resource { data: input.len() }
     }
 
-    fn from_number(input: usize) -> Resource
-    {
-        Resource{
-            data: input
-        }
+    fn from_number(input: usize) -> Resource {
+        Resource { data: input }
     }
 
-    fn print(&self)
-    {
+    fn print(&self) {
         println!("data = {}", self.data)
     }
 }
 
-fn should_the_string_be_used() -> bool
-{
-  return true;
+fn should_the_string_be_used() -> bool {
+    return true;
 }
 
 fn main() {

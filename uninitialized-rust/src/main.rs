@@ -1,5 +1,5 @@
 struct Test {
-    x: f32
+    x: f32,
 }
 
 fn main() {
