@@ -6,4 +6,5 @@ members = [
   "initialize-choice-rust",
   "printing-rust",
   "requirements-rust",
+  "functional-iterators-rust",
 ]
