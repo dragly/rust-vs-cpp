@@ -1,9 +1,6 @@
 Andreas could make the CPP version of the state machine
 Andreas could make the Rust version of the mutex guard
 
-Matyas add run-rust and run-cpp and choose between them from run (M)
-Matyas add initilaize value based on condition
-
 Add traits example
 
 Presentation:

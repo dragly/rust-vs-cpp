@@ -5,4 +5,5 @@ members = [
   "variants-rust",
   "initialize-choice-rust",
   "printing-rust",
+  "requirements-rust",
 ]
