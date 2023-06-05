@@ -9,4 +9,4 @@ else
     BUILD_FLAG=--release
 fi
 
-cargo run $BUILD_FLAG --bin $1
+cargo run $BUILD_FLAG --bin $1 || exit $?

@@ -38,7 +38,7 @@ void act(const Command &command) {
           [](const Multiply &multiply) {
             fmt::println("{}", multiply.a * multiply.b);
           },
-         [](const StatusOK &) { fmt::println("Everything will be alright!"); },
+          [](const StatusOK &) { fmt::println("Everything will be alright!"); },
       },
       command);
 }
@@ -105,17 +105,13 @@ struct Multiply {
 
 struct StatusOK {};
 
-void act(const Message &message) {
-  fmt::println("{}", message.contents);
-}
+void act(const Message &message) { fmt::println("{}", message.contents); }
 
 void act(const Multiply &multiply) {
   fmt::println("{}", multiply.a * multiply.b);
 }
 
-void act(const StatusOK &) {
-  fmt::println("Everything will be alright!");
-}
+void act(const StatusOK &) { fmt::println("Everything will be alright!"); }
 
 void run() {
   act(Message{"Hello"});
@@ -128,13 +124,17 @@ void run() {
 
 namespace enums {
 
-struct CommandBase {};
+struct CommandBase {
+  virtual ~CommandBase() = default;
+};
 
 struct Message : public CommandBase {
+  Message(std::string c) : contents(c) {}
   std::string contents;
 };
 
 struct Multiply : public CommandBase {
+  Multiply(float a_, float b_) : a(a_), b(b_) {}
   float a;
   float b;
 };
@@ -149,18 +149,24 @@ enum class Command {
 
 void act(const Command &command, std::unique_ptr<CommandBase> cmd) {
   switch (command) {
-  case Command::message:
-    fmt::println("...");
-  case Command::multiply:
-    fmt::println("...");
+  case Command::message: {
+    fmt::println("{}", dynamic_cast<Message *>(cmd.get())->contents);
+    break;
+  }
+  case Command::multiply: {
+    const auto multiply = dynamic_cast<Multiply *>(cmd.get());
+    fmt::println("{}", multiply->a * multiply->b);
+    break;
+  }
   case Command::statusOK:
     fmt::println("Everything will be alright!");
+    break;
   }
 }
 void run() {
-  act(Command::message);
-  act(Command::multiply);
-  act(Command::statusOK);
+  act(Command::message, std::make_unique<Message>("Hello"));
+  act(Command::multiply, std::make_unique<Multiply>(1.1, 3.2));
+  act(Command::statusOK, std::make_unique<StatusOK>());
 }
 } // namespace enums
 
@@ -174,7 +180,7 @@ int main() {
   inheritance::run();
 
   fmt::println("\n\nTemplates:");
-  templates::run();
+  overloads::run();
 
   fmt::println("\n\nEnums:");
   enums::run();

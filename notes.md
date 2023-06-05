@@ -4,9 +4,6 @@ Andreas could make the Rust version of the mutex guard
 Matyas add run-rust and run-cpp and choose between them from run (M)
 Matyas add initilaize value based on condition
 
-Svenn-Arne push changes 4 real
-Svenn-Arne add disgusting dynamic_cast-s
-
 Add traits example
 
 Presentation:

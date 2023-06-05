@@ -8,13 +8,13 @@ die () {
 
 echo $1 | grep -- "-cpp$"
 if [ $? -eq 0 ]; then
-    ./run-cpp.sh "$@"
+    ./run-cpp.sh "$@" || exit $?
     exit 0
 fi
 
 echo $1 | grep -- "-rust$"
 if [ $? -eq 0 ]; then
-    ./run-rust.sh "$@"
+    ./run-rust.sh "$@" || exit $?
     exit 0
 fi
 
