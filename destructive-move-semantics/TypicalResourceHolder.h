@@ -1,6 +1,6 @@
 
 // Typical resource holder.
-// Objective: Make it movable.
+// Task 1: Make it movable.
 // Can it be done without adding runtime state and branching?
 template<typename Mutex>
 class Guard
@@ -23,3 +23,6 @@ public:
 private:
     Mutex& m_mutex;
 };
+
+// Task 2:
+// Why would C++ have both std::lock_guard and std::unique_lock?
