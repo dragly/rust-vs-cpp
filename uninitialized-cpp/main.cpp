@@ -18,3 +18,5 @@ int main()
         std::cout << "x is " << b.x << "!\n";
     }
 }
+
+// NOTE: Try it out in both Debug and Release mode

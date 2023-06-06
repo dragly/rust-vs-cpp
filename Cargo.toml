@@ -7,4 +7,6 @@ members = [
   "printing-rust",
   "requirements-rust",
   "functional-iterators-rust",
+  "error-messages-rust",
+  "fearless-concurrency-rust",
 ]
