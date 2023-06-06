@@ -6,6 +6,7 @@ export CC=clang-16 || exit $?
 export CXX=clang++-16 || exit $?
 
 BUILD_TYPE=${2:-Debug}
+SANITIZATION=${3:-}
 
 mkdir -p build || exit $?
 cd build || exit $?
@@ -14,6 +15,7 @@ cmake .. \
     -DCMAKE_TOOLCHAIN_FILE=build/conan_toolchain.cmake \
     -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+    -DSANITIZATION=$SANITIZATION \
     -GNinja \
     || exit $?
 cp compile_commands.json .. || exit $?
