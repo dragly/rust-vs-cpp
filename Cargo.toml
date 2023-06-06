@@ -9,4 +9,5 @@ members = [
   "functional-iterators-rust",
   "error-messages-rust",
   "fearless-concurrency-rust",
+  "state-machine-rust",
 ]
