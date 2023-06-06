@@ -10,4 +10,5 @@ members = [
   "error-messages-rust",
   "fearless-concurrency-rust",
   "state-machine-rust",
+  "threads-rust",
 ]
